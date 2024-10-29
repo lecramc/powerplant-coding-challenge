@@ -1,0 +1,45 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.1
+    hooks:
+      - id: ruff
+        name: ruff-format
+        entry: ruff
+        args: ["format","."]
+        types: [python]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.1
+    hooks:
+      - id: ruff
+        name: ruff-check
+        entry: ruff
+        args: ["check", "--fix"]
+        types: [python]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.5.1
+    hooks:
+      - id: mypy
+        name: mypy-check
+        types: [python]
+
+  - repo: local
+    hooks:
+      - id: pytest-unit
+        name: pytest-unit
+        entry: pytest
+        language: system
+        pass_filenames: false
+        args: ["-m", "unit"]
+        types: [python]
+
+  - repo: local
+    hooks:
+      - id: pytest-integration
+        name: pytest-integration
+        entry: pytest
+        language: system
+        pass_filenames: false
+        args: ["-m", "integration"]
+        types: [python]
