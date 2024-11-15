@@ -18,6 +18,7 @@ router = APIRouter(prefix="/productionplan", tags=["productionplan"])
 async def production_plan(
     request: ProductionPlanRequest,
 ) -> List[ProductionPlanResponse]:
+    """Route to get the production plan for a given load"""
     try:
         load, fuel_prices, wind_percentage, plants = convert_request_to_entities(
             request

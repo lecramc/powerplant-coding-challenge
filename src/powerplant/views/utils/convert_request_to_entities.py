@@ -10,6 +10,7 @@ from src.powerplant.views.schemas.production_plan_model import ProductionPlanReq
 def convert_request_to_entities(
     request: ProductionPlanRequest,
 ) -> Tuple[float, Dict[str, float], float, List[PowerPlant]]:
+    """Convert the request to the entities used in the usecases"""
     load = request.load
     fuel_prices = {
         "gas": request.fuels.gas,

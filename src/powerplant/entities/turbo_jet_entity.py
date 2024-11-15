@@ -7,6 +7,7 @@ class TurboJet(PowerPlant):
     def calculate_cost_per_mwh(
         self, fuel_price: Optional[float] = 0, co2_price: Optional[float] = 0
     ) -> float:
+        """Calculate the cost per MWh for the turbojet"""
         if not fuel_price:
             raise ValueError("No fuel price provided")
         return fuel_price / self.efficiency
@@ -14,4 +15,5 @@ class TurboJet(PowerPlant):
     def calculate_production(
         self, load: float, wind_percentage: Optional[float] = 0
     ) -> float:
+        """Calculate the production of the turbojet"""
         return min(self.pmax, max(self.pmin, load))

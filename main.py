@@ -6,7 +6,14 @@ from fastapi import FastAPI
 from src.powerplant.views import production_plan_route
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-app = FastAPI()
+
+tags_metadata = [
+    {
+        "name": "productionplan",
+        "description": "Get the production plan for a given load",
+    }
+]
+app = FastAPI(title="Production Plan API", openapi_tags=tags_metadata)
 
 app.include_router(production_plan_route.router)
 

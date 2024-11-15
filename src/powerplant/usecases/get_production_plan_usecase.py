@@ -8,12 +8,15 @@ Plan = TypedDict("Plan", {"name": str, "p": float})
 
 
 class ProductionPlan:
+    """Usecase to get the production plan for a given load"""
+
     def __init__(self, plants: List[PowerPlant]):
         self.plants: List[PowerPlant] = plants
 
     def execute(
         self, load: float, fuel_prices: Dict[str, float], wind_percentage: float
     ) -> List[Plan]:
+        """Execute the usecase"""
         self._calculate_production_costs(fuel_prices)
 
         self.plants.sort(key=lambda plant: plant.cost)
